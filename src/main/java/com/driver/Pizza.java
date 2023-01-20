@@ -6,14 +6,7 @@ public class Pizza {
     private Boolean isVeg;
     private String bill;
 
-    /*
- Veg pizza base price = 300
-Non-veg pizza base price = 400
-Extra Cheese Price = 80
-Extra Toppings For Veg Pizza = 70
-Extra Toppings For Non-veg Pizza = 120
-Paper bag Price = 20
-    * */
+
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
          if(isVeg==true){
@@ -60,9 +53,8 @@ Paper bag Price = 20
     }
 
     public String getBill(){
-        bill = "Base Price Of The Pizza: "+(isVeg?300:400)+"\n"+(cheeseExtra?("Extra Cheese Added: "+80+"\n"):"")+(topping?("Extra Toppings Added: "+(isVeg?70:120)+"\n"):"")+
-                (takeAway?("Paperbag Added: "+20+"\n"):"")+"Total Price: "+price+"\n";
-
+        //copied from other space probelm h only
+        this.bill = ("Base Price Of The Pizza: " + (isVeg ? 300 : 400) + "\nExtra Cheese Added: 80\nExtra Toppings Added: " + (isVeg ? 70 : 120) + (takeAway ? "\nPaperbag Added: 20" : "") + "\nTotal Price: " + this.price + "\n");
         return this.bill;
     }
 }

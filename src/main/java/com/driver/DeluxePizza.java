@@ -3,7 +3,7 @@ package com.driver;
 public class DeluxePizza extends Pizza {
 
     public DeluxePizza(Boolean isVeg) {
-        super(isVeg); // what is super in here
+          super(isVeg); // calling partent constructor
         addExtraCheese();
         addExtraToppings();
     }
