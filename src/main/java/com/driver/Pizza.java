@@ -7,54 +7,81 @@ public class Pizza {
     private String bill;
 
 
+    private int cheeseExtra;
+    private int topping;
+
+    boolean isExtraCheeseAdded;
+    boolean isExtraToppingAdded;
+    boolean isTakeAwayAdded;
+    boolean isBillGenerated;
+
     public Pizza(Boolean isVeg){
+        this.isBillGenerated=false;
+        this.isExtraCheeseAdded=false;
+        this.isExtraToppingAdded=false;
+        this.isTakeAwayAdded=false;
+        this.bill ="";
+
         this.isVeg = isVeg;
          if(isVeg==true){
-             price=300;
+          this.price=300;
+          this.topping = 70;
 
          }
         else{
             price=400;
+            this.topping=120;
 
          }
-
+        this.cheeseExtra=80;
+        this.bill += "Base Price Of the Pizza: "+this.price +"\n";
     }
 
     public int getPrice(){
 
         return price;
     }
-   private boolean cheeseExtra=false;
+
     public void addExtraCheese(){
-        if(cheeseExtra==false){
-            price+=80;
-            cheeseExtra=true;
+        if(isExtraCheeseAdded==false){
+            this.price=this.price+cheeseExtra;
+             isExtraCheeseAdded=true;
         }
+    }
+
+    public void addExtraToppings(){
+         if(isExtraToppingAdded==false){
+             this.price=this.price+topping;
+             isExtraToppingAdded=true;
+         }
 
     }
-    private boolean topping=false;
-    public void addExtraToppings(){
-        // your code goes here
-        if(isVeg==true){
-            price+=70;
-        }
-        else{
-            price+=120;
-        }
-        topping=true;
-    }
-    private boolean takeAway=false;
+
     public void addTakeaway(){
-        // your code goes here
-        if(takeAway==false){
-            price+=20;
-              }
-        takeAway=true;
+        if(isTakeAwayAdded==false){
+            this.price=this.price+20;
+            isTakeAwayAdded=true;
+        }
+
     }
 
     public String getBill(){
-        //copied from other space probelm h only
-        this.bill = ("Base Price Of The Pizza: " + (isVeg ? 300 : 400) + "\nExtra Cheese Added: 80\nExtra Toppings Added: " + (isVeg ? 70 : 120) + (takeAway ? "\nPaperbag Added: 20" : "") + "\nTotal Price: " + this.price + "\n");
-        return this.bill;
+        if(isBillGenerated==false){
+            if(isExtraCheeseAdded){
+   this.bill += "Extra Cheese Added: "+this.cheeseExtra +"\n";
+            }
+            if(isExtraToppingAdded){
+   this.bill += "Extra Toppings Added: "+this.topping+"\n";
+            }
+            if(isTakeAwayAdded){
+                this.bill+="Paperbag Added: "+"20"+"\n";
+            }
+
+            this.bill +="Total Price: "+this.price+"\n";
+            isBillGenerated=true;
+
+        }
+
+         return this.bill;
     }
 }
